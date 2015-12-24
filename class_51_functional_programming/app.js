@@ -25,3 +25,15 @@ var arr3 = mapForEach(arr1, function (item) {
     return item < 2;
 });
 console.log(arr3);
+
+var checkPastLimit = function(limiter, item) {
+    return item > limiter;
+};
+
+var bindLimiter = function(limiter) {
+    return function(limiter, item) {
+        return item > limiter;
+    }.bind(this, limiter);
+};
+var arr4 = mapForEach(arr1, bindLimiter(2));
+console.log(arr4);
